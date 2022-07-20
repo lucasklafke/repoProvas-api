@@ -9,3 +9,79 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id       Int       @id @default(autoincrement())
+  email    String
+  password String
+  Session  Session[]
+
+  @@map("users")
+}
+
+model Session {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  createdAt DateTime @default(now())
+  token     String
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("sessions")
+}
+
+model Categorie {
+  id    Int    @id @default(autoincrement())
+  name  String
+  Tests Test[]
+
+  @@map("categories")
+}
+
+model Teacher {
+  id                   Int                   @id @default(autoincrement())
+  name                 String
+  Teachers_Disciplines Teacher_Disciplines[]
+
+  @@map("teachers")
+}
+
+model Term {
+  id          Int          @id @default(autoincrement())
+  number      Int
+  Disciplines Discipline[]
+
+  @@map("terms")
+}
+
+model Discipline {
+  id                   Int                   @id @default(autoincrement())
+  name                 String
+  termId               Int
+  terms                Term                  @relation(fields: [termId], references: [id])
+  Teachers_Disciplines Teacher_Disciplines[]
+
+  @@map("disciplines")
+}
+
+model Teacher_Disciplines {
+  id            Int        @id @default(autoincrement())
+  teacher_id    Int
+  teachers      Teacher    @relation(fields: [teacher_id], references: [id])
+  discipline_id Int
+  discipliners  Discipline @relation(fields: [discipline_id], references: [id])
+  Tests         Test[]
+
+  @@map("teachers_disciplines")
+}
+
+model Test {
+  id                   Int                 @id @default(autoincrement())
+  name                 String
+  pdfUrl               String
+  categoryId           Int
+  categories           Categorie           @relation(fields: [categoryId], references: [id])
+  teacherDisciplineId  Int
+  teachers_disciplines Teacher_Disciplines @relation(fields: [teacherDisciplineId], references: [id])
+
+  @@map("tests")
+}
