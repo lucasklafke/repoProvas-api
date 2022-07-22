@@ -68,7 +68,7 @@ model Teacher_Discipline {
   teacher_id    Int
   teachers      Teacher    @relation(fields: [teacher_id], references: [id])
   discipline_id Int
-  discipliners  Discipline @relation(fields: [discipline_id], references: [id])
+  disciplines  Discipline @relation(fields: [discipline_id], references: [id])
   Tests         Test[]
 
   @@map("teachers_disciplines")
