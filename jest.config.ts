@@ -11,5 +11,4 @@ export default {
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
-  target:"es6"
 };
