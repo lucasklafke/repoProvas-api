@@ -7,3 +7,13 @@ export async function createTest(req: Request, res: Response){
         await testService.createTest({name, url, category, discipline, instructor})
         res.sendStatus(201)
 }
+
+export async function getTestsByDiscipline(req: Request, res: Response){
+        const tests = await testService.getTests()
+        res.json(tests)
+}
+
+export async function getTestsByInstructor(req: Request, res: Response){
+        const tests = await testService.getTests()
+        res.json(tests)
+}
