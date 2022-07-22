@@ -29,7 +29,7 @@ model Session {
   @@map("sessions")
 }
 
-model Categorie {
+model Category {
   id    Int    @id @default(autoincrement())
   name  String
   Tests Test[]
@@ -40,7 +40,7 @@ model Categorie {
 model Teacher {
   id                   Int                   @id @default(autoincrement())
   name                 String
-  Teachers_Disciplines Teacher_Disciplines[]
+  Teachers_Disciplines Teacher_Discipline[]
 
   @@map("teachers")
 }
@@ -58,12 +58,12 @@ model Discipline {
   name                 String
   termId               Int
   terms                Term                  @relation(fields: [termId], references: [id])
-  Teachers_Disciplines Teacher_Disciplines[]
+  Teachers_Disciplines Teacher_Discipline[]
 
   @@map("disciplines")
 }
 
-model Teacher_Disciplines {
+model Teacher_Discipline {
   id            Int        @id @default(autoincrement())
   teacher_id    Int
   teachers      Teacher    @relation(fields: [teacher_id], references: [id])
@@ -79,9 +79,9 @@ model Test {
   name                 String
   pdfUrl               String
   categoryId           Int
-  categories           Categorie           @relation(fields: [categoryId], references: [id])
+  Category           Category           @relation(fields: [categoryId], references: [id])
   teacherDisciplineId  Int
-  teachers_disciplines Teacher_Disciplines @relation(fields: [teacherDisciplineId], references: [id])
+  teachers_disciplines Teacher_Discipline @relation(fields: [teacherDisciplineId], references: [id])
 
   @@map("tests")
 }

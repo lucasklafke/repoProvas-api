@@ -3,14 +3,12 @@ import { User } from "@prisma/client"
 export async function createUser(email : string, password : string ) {
         const user = await client.user.create({data : {email, password}})
         return user
-
 }
 
 export async function getUserByEmail(email:string) {
   const userExist = await client.user.findFirst({where : {
         email 
   }})
-  console.log(userExist)
   return userExist
 }
 
