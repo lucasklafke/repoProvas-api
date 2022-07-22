@@ -9,8 +9,10 @@ export async function createTest(req: Request, res: Response){
 
 export async function getTestsByDiscipline(req: Request, res: Response){
         const tests = await testService.getTestsByDiscipline()
+        res.send(tests)
 }
 
 export async function getTestsByInstructor(req: Request, res: Response){
         const tests = await testService.getTestsByInstructor()
+        res.send(tests)
 }

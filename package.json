@@ -5,11 +5,14 @@
   "main": "index.js",
   "type": "module",
   "engines": {"node": "16.x"},
+  "prisma": {
+  "seed": "ts-node prisma/seed.ts"
+},
   "scripts": {
-    "dev": "nodemon src/server.ts",
+    "dev": "nodemon src/server.ts ",
     "build": "tsc",
-    "start": "node dist/src/server.js",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+    "start": "node dist/src/server.js ", 
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest -i"
   },
   "keywords": [],
   "author": "",
