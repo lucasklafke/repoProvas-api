@@ -1,7 +1,8 @@
 import express, { json } from 'express';
+import "express-async-errors";
 import errorHandler from './middlewares/errorHandler.js';
 import globalRouter from './routers/globalRouter.js';
-var app = express();
+const app = express();
 app.use(json());
 app.use(globalRouter);
 app.use(errorHandler);

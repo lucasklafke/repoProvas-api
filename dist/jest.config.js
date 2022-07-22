@@ -5,11 +5,11 @@ export default {
     extensionsToTreatAsEsm: [".ts"],
     globals: {
         "ts-jest": {
-            useESM: true
-        }
+            useESM: true,
+        },
     },
     moduleNameMapper: {
-        "^(\\.{1,2}/.*)\\.js$": "$1"
-    }
+        "^(\\.{1,2}/.*)\\.js$": "$1",
+    },
 };
 //# sourceMappingURL=jest.config.js.map

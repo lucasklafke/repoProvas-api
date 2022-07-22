@@ -1,4 +1,4 @@
-var errorHandler = function (err, req, res, next) {
+const errorHandler = (err, req, res, next) => {
     console.log(err);
     if (err.type === "conflict")
         return res.status(409).send(err.message);

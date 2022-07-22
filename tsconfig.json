@@ -3,10 +3,17 @@
                 "esModuleInterop": true,
                 "module": "es6",
                 "moduleResolution": "node",
-                "outDir": "/dist",
+                "outDir": "./dist",
                 "sourceMap": true,
+                "target": "es6",
+                "allowJs": false,
+
         },
         "ts-node": {
                 "esm": true
-        }
+        },
+        "exclude": [
+                "node_modules",
+                "**/*.spec.ts"
+        ]
 }

@@ -56,3 +56,17 @@ export async function createTest(data: createTest){
         })
         
 }
+
+export async function getTestAndInfos(){
+        return await prisma.test.findMany({
+                include: {
+                        Category: true,
+                        teachers_disciplines: {
+                                include: {
+                                        teachers: true,
+                                        
+                                }
+                        }
+                }
+        })
+}

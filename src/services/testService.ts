@@ -34,3 +34,11 @@ export async function createTest(data : CreateTest){
         }
         await testRepository.createTest(createTestData)
 }
+
+export async function getTestsByDiscipline(){
+        
+}
+
+export async function getTestsByInstructor(){
+
+}

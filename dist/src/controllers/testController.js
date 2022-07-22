@@ -7,20 +7,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import * as authService from "../services/authService.js";
-export function signUp(req, res) {
+import * as testService from "../services/testService.js";
+export function createTest(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { email, password } = req.body;
-        const token = yield authService.signUp({ email, password });
-        res.status(201).send({ token });
+        const { name, url, category, discipline, instructor } = req.body;
+        yield testService.createTest({ name, url, category, discipline, instructor });
+        res.sendStatus(201);
     });
 }
-export function signIn(req, res) {
+export function getTestsByDiscipline(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { email, password } = req.body;
-        console.log("entrei");
-        const token = yield authService.signIn({ email, password });
-        res.status(200).send({ token });
+        const tests = yield testService.getTestsByDiscipline();
     });
 }
-//# sourceMappingURL=authController.js.map
+export function getTestsByInstructor(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const tests = yield testService.getTestsByInstructor();
+    });
+}
+//# sourceMappingURL=testController.js.map
